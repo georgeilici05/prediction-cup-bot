@@ -107,6 +107,22 @@
     "Arizona Governor": {
       "quantity": 1128,
       "entry_cost": 0.99
+    },
+    "IA-01 House race": {
+      "quantity": 446,
+      "entry_cost": 0.9850000000000001
+    },
+    "Hawaii Governor": {
+      "quantity": 656,
+      "entry_cost": 0.99
+    },
+    "Florida Governor": {
+      "quantity": 1071,
+      "entry_cost": 0.99
+    },
+    "AZ-06 House race": {
+      "quantity": 203,
+      "entry_cost": 0.99
     }
   }
 }
