@@ -18,8 +18,8 @@ GitHub's scheduled workflows are best-effort rather than precise timers. Review 
 
 ## Risk controls
 
-- Total cap: 10,000 SUSQies per cycle.
-- Per-state cap: 1,000 SUSQies per cycle.
+- Total cap: 40,000 SUSQies across active bot positions.
+- Per-contest cap: 2,000 SUSQies across active bot positions.
 - Existing holdings are excluded from new entries.
 - The process stops after a partial fill instead of continuing to place orders.
 - `.env` is ignored. Do not commit it or paste its key into an issue, log, or README.

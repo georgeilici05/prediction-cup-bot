@@ -19,8 +19,8 @@ jobs:
     timeout-minutes: 5
     env:
       SUSQ_API_KEY: ${{ secrets.SUSQ_API_KEY }}
-      MAX_TOTAL: "10000"
-      MAX_PER_STATE: "1000"
+      MAX_TOTAL: "40000"
+      MAX_PER_STATE: "2000"
     steps:
       - name: Check out the private repository
         uses: actions/checkout@v4
