@@ -7,6 +7,46 @@
     "Kentucky": {
       "quantity": 370,
       "entry_cost": 0.99
+    },
+    "Oklahoma Governor": {
+      "quantity": 100,
+      "entry_cost": 0.975
+    },
+    "New Hampshire Governor": {
+      "quantity": 1025,
+      "entry_cost": 0.975
+    },
+    "Alaska Governor": {
+      "quantity": 1010,
+      "entry_cost": 0.99
+    },
+    "WI-03 House race": {
+      "quantity": 1015,
+      "entry_cost": 0.985
+    },
+    "WI-01 House race": {
+      "quantity": 1010,
+      "entry_cost": 0.99
+    },
+    "WA-03 House race": {
+      "quantity": 1010,
+      "entry_cost": 0.99
+    },
+    "VA-05 House race": {
+      "quantity": 1020,
+      "entry_cost": 0.98
+    },
+    "VA-01 House race": {
+      "quantity": 1025,
+      "entry_cost": 0.975
+    },
+    "MN-02 House race": {
+      "quantity": 1010,
+      "entry_cost": 0.99
+    },
+    "MI-10 House race": {
+      "quantity": 1010,
+      "entry_cost": 0.99
     }
   }
 }

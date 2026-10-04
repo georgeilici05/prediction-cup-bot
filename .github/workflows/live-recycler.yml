@@ -38,6 +38,7 @@ jobs:
       # The bot-owned position ledger is deliberately committed, so the next
       # temporary GitHub runner knows which positions it is permitted to exit.
       - name: Persist the bot ledger
+        if: always()
         run: |
           git config user.name "predictions-cup-bot"
           git config user.email "predictions-cup-bot@users.noreply.github.com"

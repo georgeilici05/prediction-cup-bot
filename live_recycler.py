@@ -85,6 +85,29 @@ def book_pair(key: str, tournament: str, grouped: dict[str, dict[str, dict[str, 
     }
 
 
+def ranked_entry_states(key: str, tournament: str, grouped: dict[str, dict[str, dict[str, str]]], held: set[str], open_states: set[str], minimum_edge: float) -> list[str]:
+    """Use one bulk-price request to rank candidates before book validation."""
+    eligible = {
+        name: contracts for name, contracts in grouped.items()
+        if name not in open_states and set(contracts) == {"Republican", "Democratic"}
+        and contracts["Republican"]["id"] not in held and contracts["Democratic"]["id"] not in held
+    }
+    ids = [contract["id"] for contracts in eligible.values() for contract in contracts.values()]
+    prices: dict[str, dict[str, Any]] = {}
+    for start in range(0, len(ids), 100):
+        response = get(key, "/exchanges/prices", ids=",".join(ids[start:start + 100]), tournamentId=tournament)
+        prices.update({str(item["exchangeId"]): item for item in response.get("data", [])})
+    ranked: list[tuple[float, str]] = []
+    for name, contracts in eligible.items():
+        rep, dem = prices.get(contracts["Republican"]["id"]), prices.get(contracts["Democratic"]["id"])
+        if not rep or not dem or rep.get("bestBid") is None or dem.get("bestBid") is None:
+            continue
+        edge = float(rep["bestBid"]) + float(dem["bestBid"]) - 1.0
+        if edge >= minimum_edge:
+            ranked.append((edge, name))
+    return [name for _, name in sorted(ranked, reverse=True)]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Live-capable, fail-stop Senate recycler.")
     parser.add_argument("--execute", action="store_true")
@@ -118,11 +141,13 @@ def main() -> None:
     used = sum(float(lot["entry_cost"]) * int(lot["quantity"]) for lot in data["open"].values())
     total_cap = args.max_total or 0.0
     per_state_cap = args.max_per_state or 0.0
-    for market_state, contracts in grouped.items():
-        if market_state in data["open"] or set(contracts) != {"Republican", "Democratic"}:
-            continue
-        if contracts["Republican"]["id"] in held or contracts["Democratic"]["id"] in held:
-            continue
+    if args.execute and total_cap - used < 1.0:
+        print(f"Entry cap already allocated ({used:.2f}/{total_cap:.2f}); no new entries this cycle.")
+        print("Live cycle completed.")
+        return
+    for market_state in ranked_entry_states(key, tournament, grouped, held, set(data["open"]), args.entry_edge):
+        if args.execute and used >= total_cap:
+            break
         pair = book_pair(key, tournament, grouped, market_state, for_exit=False)
         if not pair:
             continue
