@@ -123,6 +123,10 @@
     "AZ-06 House race": {
       "quantity": 203,
       "entry_cost": 0.99
+    },
+    "NY-17 House race": {
+      "quantity": 268,
+      "entry_cost": 0.99
     }
   }
 }
