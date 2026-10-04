@@ -127,6 +127,14 @@
     "NY-17 House race": {
       "quantity": 268,
       "entry_cost": 0.99
+    },
+    "ME-02 House race": {
+      "quantity": 2020,
+      "entry_cost": 0.99
+    },
+    "Idaho Governor": {
+      "quantity": 1962,
+      "entry_cost": 0.99
     }
   }
 }
