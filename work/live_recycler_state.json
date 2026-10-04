@@ -47,6 +47,22 @@
     "MI-10 House race": {
       "quantity": 1010,
       "entry_cost": 0.99
+    },
+    "Idaho Governor": {
+      "quantity": 646,
+      "entry_cost": 0.9650000000000001
+    },
+    "Oregon Governor": {
+      "quantity": 752,
+      "entry_cost": 0.975
+    },
+    "FL-22 House race": {
+      "quantity": 1081,
+      "entry_cost": 0.975
+    },
+    "VA-07 House race": {
+      "quantity": 976,
+      "entry_cost": 0.98
     }
   }
 }
