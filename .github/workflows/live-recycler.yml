@@ -1,0 +1,46 @@
+name: Live recycler
+
+on:
+  schedule:
+    # GitHub schedules are best-effort; this requests a run every five minutes.
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: live-recycler
+  cancel-in-progress: false
+
+jobs:
+  recycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SUSQ_API_KEY: ${{ secrets.SUSQ_API_KEY }}
+      MAX_TOTAL: "10000"
+      MAX_PER_STATE: "1000"
+    steps:
+      - name: Check out the private repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run one protected recycler cycle
+        run: python3 live_recycler.py --execute --max-total "$MAX_TOTAL" --max-per-state "$MAX_PER_STATE"
+
+      # The bot-owned position ledger is deliberately committed, so the next
+      # temporary GitHub runner knows which positions it is permitted to exit.
+      - name: Persist the bot ledger
+        run: |
+          git config user.name "predictions-cup-bot"
+          git config user.email "predictions-cup-bot@users.noreply.github.com"
+          git add work/live_recycler_state.json
+          git diff --cached --quiet || git commit -m "chore: update live recycler ledger"
+          git push origin "HEAD:${GITHUB_REF#refs/heads/}"

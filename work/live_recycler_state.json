@@ -1,0 +1,12 @@
+{
+  "open": {
+    "Michigan": {
+      "quantity": 549,
+      "entry_cost": 0.9800000000000001
+    },
+    "Kentucky": {
+      "quantity": 370,
+      "entry_cost": 0.99
+    }
+  }
+}
