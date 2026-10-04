@@ -12,6 +12,7 @@ import argparse
 import json
 import math
 import sys
+import time
 import uuid
 from pathlib import Path
 from typing import Any
@@ -46,6 +47,21 @@ def submit_pair(key: str, tournament: str, pair: dict[str, Any], quantity: int, 
 def fully_filled(result: dict[str, Any]) -> bool:
     legs = result.get("results", [])
     return len(legs) == 2 and all(item.get("data", {}).get("remainingQuantity") == 0 for item in legs)
+
+
+def confirmed_filled(key: str, result: dict[str, Any]) -> bool:
+    """Allow the engine projection a few seconds to finish a just-crossed pair."""
+    if fully_filled(result):
+        return True
+    order_ids = [item.get("data", {}).get("orderId") for item in result.get("results", [])]
+    if len(order_ids) != 2 or any(order_id is None for order_id in order_ids):
+        return False
+    for _ in range(3):
+        time.sleep(2)
+        orders = [get(key, f"/orders/{order_id}") for order_id in order_ids]
+        if all(not order.get("open") and order.get("quantityFilled") == order.get("quantity") for order in orders):
+            return True
+    return False
 
 
 def discover(key: str, tournament: str) -> tuple[dict[str, dict[str, str]], set[str]]:
@@ -133,7 +149,7 @@ def main() -> None:
         print(f"EXIT {market_state}: {lot['quantity']} pairs, locked profit {(exit_value - lot['entry_cost']) * lot['quantity']:.2f}")
         if args.execute:
             result = submit_pair(key, tournament, pair, int(lot["quantity"]), "sell")
-            if not fully_filled(result):
+            if not confirmed_filled(key, result):
                 raise RuntimeError(f"Partial exit in {market_state}; stopped. Check Orders before continuing.")
             del data["open"][market_state]
             save(data)
@@ -161,7 +177,7 @@ def main() -> None:
         print(f"ENTRY {market_state}: {quantity} pairs, maximum cost {quantity * cost:.2f}")
         if args.execute:
             result = submit_pair(key, tournament, pair, quantity, "buy")
-            if not fully_filled(result):
+            if not confirmed_filled(key, result):
                 raise RuntimeError(f"Partial entry in {market_state}; stopped. Check Orders before continuing.")
             data["open"][market_state] = {"quantity": quantity, "entry_cost": cost}
             used += quantity * cost

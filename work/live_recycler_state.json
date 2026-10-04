@@ -50,7 +50,7 @@
     },
     "Idaho Governor": {
       "quantity": 646,
-      "entry_cost": 0.9650000000000001
+      "entry_cost": 0.965
     },
     "Oregon Governor": {
       "quantity": 752,
@@ -62,6 +62,10 @@
     },
     "VA-07 House race": {
       "quantity": 976,
+      "entry_cost": 0.98
+    },
+    "Pennsylvania Governor": {
+      "quantity": 393,
       "entry_cost": 0.98
     }
   }
