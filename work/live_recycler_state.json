@@ -48,14 +48,6 @@
       "quantity": 1010,
       "entry_cost": 0.99
     },
-    "Idaho Governor": {
-      "quantity": 646,
-      "entry_cost": 0.965
-    },
-    "Oregon Governor": {
-      "quantity": 752,
-      "entry_cost": 0.975
-    },
     "FL-22 House race": {
       "quantity": 1081,
       "entry_cost": 0.975
@@ -67,6 +59,38 @@
     "Pennsylvania Governor": {
       "quantity": 393,
       "entry_cost": 0.98
+    },
+    "Minnesota Senate": {
+      "quantity": 2061,
+      "entry_cost": 0.9700000000000001
+    },
+    "Michigan Governor": {
+      "quantity": 2051,
+      "entry_cost": 0.975
+    },
+    "South Dakota Senate": {
+      "quantity": 2040,
+      "entry_cost": 0.9800000000000001
+    },
+    "Minnesota Governor": {
+      "quantity": 2040,
+      "entry_cost": 0.98
+    },
+    "New Jersey Senate": {
+      "quantity": 2030,
+      "entry_cost": 0.985
+    },
+    "California Governor": {
+      "quantity": 860,
+      "entry_cost": 0.985
+    },
+    "Wyoming Senate": {
+      "quantity": 2020,
+      "entry_cost": 0.99
+    },
+    "MN-01 House race": {
+      "quantity": 1158,
+      "entry_cost": 0.99
     }
   }
 }
