@@ -28,10 +28,6 @@
       "quantity": 1010,
       "entry_cost": 0.99
     },
-    "WA-03 House race": {
-      "quantity": 1010,
-      "entry_cost": 0.99
-    },
     "VA-05 House race": {
       "quantity": 1020,
       "entry_cost": 0.98
@@ -90,6 +86,26 @@
     },
     "MN-01 House race": {
       "quantity": 1158,
+      "entry_cost": 0.99
+    },
+    "Rhode Island Senate": {
+      "quantity": 1491,
+      "entry_cost": 0.99
+    },
+    "Illinois Senate": {
+      "quantity": 2020,
+      "entry_cost": 0.99
+    },
+    "FL-16 House race": {
+      "quantity": 1208,
+      "entry_cost": 0.99
+    },
+    "FL-09 House race": {
+      "quantity": 2020,
+      "entry_cost": 0.99
+    },
+    "Arizona Governor": {
+      "quantity": 1128,
       "entry_cost": 0.99
     }
   }
