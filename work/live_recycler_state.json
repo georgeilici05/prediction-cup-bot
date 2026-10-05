@@ -72,10 +72,6 @@
       "quantity": 2040,
       "entry_cost": 0.98
     },
-    "New Jersey Senate": {
-      "quantity": 2030,
-      "entry_cost": 0.985
-    },
     "California Governor": {
       "quantity": 860,
       "entry_cost": 0.985
@@ -86,10 +82,6 @@
     },
     "MN-01 House race": {
       "quantity": 1158,
-      "entry_cost": 0.99
-    },
-    "Rhode Island Senate": {
-      "quantity": 1491,
       "entry_cost": 0.99
     },
     "Illinois Senate": {
@@ -143,6 +135,14 @@
     "U.S. Senate": {
       "quantity": 39,
       "entry_cost": 0.9849999999999999
+    },
+    "FL-13 House race": {
+      "quantity": 374,
+      "entry_cost": 0.975
+    },
+    "U.S. House": {
+      "quantity": 1196,
+      "entry_cost": 0.99
     }
   }
 }
