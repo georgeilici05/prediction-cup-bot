@@ -64,10 +64,6 @@
       "quantity": 2051,
       "entry_cost": 0.975
     },
-    "South Dakota Senate": {
-      "quantity": 2040,
-      "entry_cost": 0.9800000000000001
-    },
     "Minnesota Governor": {
       "quantity": 2040,
       "entry_cost": 0.98
@@ -142,6 +138,18 @@
     },
     "U.S. House": {
       "quantity": 1196,
+      "entry_cost": 0.99
+    },
+    "PA-10 House race": {
+      "quantity": 154,
+      "entry_cost": 0.99
+    },
+    "IA-03 House race": {
+      "quantity": 1818,
+      "entry_cost": 0.99
+    },
+    "Georgia Governor": {
+      "quantity": 1379,
       "entry_cost": 0.99
     }
   }
