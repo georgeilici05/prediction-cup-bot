@@ -139,6 +139,18 @@
     "PA-08 House race": {
       "quantity": 82,
       "entry_cost": 0.99
+    },
+    "CO-08 House race": {
+      "quantity": 707,
+      "entry_cost": 0.98
+    },
+    "Oklahoma Governor": {
+      "quantity": 210,
+      "entry_cost": 0.985
+    },
+    "New Mexico Governor": {
+      "quantity": 572,
+      "entry_cost": 0.99
     }
   }
 }
