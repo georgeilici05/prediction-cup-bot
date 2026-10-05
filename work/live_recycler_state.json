@@ -72,10 +72,6 @@
       "quantity": 860,
       "entry_cost": 0.985
     },
-    "Wyoming Senate": {
-      "quantity": 2020,
-      "entry_cost": 0.99
-    },
     "MN-01 House race": {
       "quantity": 1158,
       "entry_cost": 0.99
@@ -150,6 +146,10 @@
     },
     "Georgia Governor": {
       "quantity": 1379,
+      "entry_cost": 0.99
+    },
+    "PA-08 House race": {
+      "quantity": 82,
       "entry_cost": 0.99
     }
   }
